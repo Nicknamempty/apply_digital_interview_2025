@@ -6,16 +6,16 @@ export class PaginationModel {
     @IsOptional()
     @IsInt()
     @ApiProperty({ description: 'Page number', example: 1, required: false })
-    page: number;
+    page?: number;
   
     @IsOptional()
     @IsInt()
     @ApiProperty({ description: 'Limit number', example: 10, required: false })
-    limit: number;
+    limit?: number;
   
-    totalPages: number;
+    totalPages?: number;
   
-    totalItems: number;
+    totalItems?: number;
   
     nextPage?: number;
   

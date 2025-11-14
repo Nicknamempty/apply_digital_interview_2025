@@ -7,43 +7,43 @@ export class ProductQueryDto extends PaginationModel{
     @ApiProperty({ description: 'Minimum price range', example: 100, required: false })
     @IsOptional()
     @IsNumber()
-    minPrice: number;
+    minPrice?: number;
 
     @ApiProperty({ description: 'Maximum price range', example: 1000, required: false })
     @IsOptional()
     @IsNumber()
-    maxPrice: number;
+    maxPrice?: number;
 
     @IsOptional()
     @IsString()
     @ApiProperty({ description: 'filter by category', example: 'Electronics', required: false })
-    category: string;
+    category?: string;
 
     @IsOptional()
     @IsString()
     @ApiProperty({ description: 'filter by name', example: 'iPhone', required: false })
-    name: string;
+    name?: string;
 
     @IsOptional()
     @IsString()
     @ApiProperty({ description: 'filter by color', example: 'Red', required: false })
-    color: string;
+    color?: string;
 
     @IsOptional()
     @IsString()
     @ApiProperty({ description: 'filter by brand', example: 'Apple', required: false })
-    brand:string;
+    brand?:string;
 
     @IsOptional()
 
     @IsInt()
     @ApiProperty({ description: 'Minimum stock range', example: 10, required: false })
-    minStock: number;
+    minStock?: number;
 
     @IsOptional()
     @IsInt()
     @ApiProperty({ description: 'Maximum stock range', example: 100, required: false })
-    maxStock: number;
+    maxStock?: number;
 
 }
 
@@ -51,14 +51,14 @@ export class ProductQueryDto extends PaginationModel{
 export class ReportQueryDto {
     @IsOptional()
     @IsDate()
-    from: Date;
+    from?: Date;
 
     @IsOptional()
     @IsDate()
-    to: Date;
+    to?: Date;
 
     @IsOptional()
     @IsString()
     @IsIn(['Y', 'N', 'ALL'])
-    withPrice: 'Y' | 'N' | 'ALL' = 'ALL';
+    withPrice?: 'Y' | 'N' | 'ALL' = 'ALL';
 }

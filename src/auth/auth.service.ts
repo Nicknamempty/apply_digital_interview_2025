@@ -16,14 +16,4 @@ export class AuthService {
     return this.jwtService.sign(payload);
   }
 
-
-  async validateToken(token: string): Promise<JwtPayload> {
-    try {
-      return this.jwtService.verify<JwtPayload>(token);
-    } catch (error) {
-      throw new UnauthorizedException('Invalid or expired token');
-    }
-  }
-
-
 }
