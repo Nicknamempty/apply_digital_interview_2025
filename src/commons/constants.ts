@@ -16,3 +16,7 @@ export const TYPEORM_USERNAME = process.env.TYPEORM_USERNAME;
 export const TYPEORM_PASSWORD = process.env.TYPEORM_PASSWORD;
 export const TYPEORM_PORT = process.env.TYPEORM_PORT;
 export const TYPEORM_HOST = process.env.TYPEORM_HOST;
+
+// JWT constants
+export const JWT_SECRET = process.env.JWT_SECRET;
+export const JWT_EXPIRES_IN = parseInt(process.env.JWT_EXPIRES_IN) || 24 * 60 * 60;

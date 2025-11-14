@@ -6,6 +6,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { HttpModule } from '@nestjs/axios';
 import ormConfig from './configs/orm-config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [ProductsModule, ScheduleModule.forRoot(), HttpModule,
@@ -14,6 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: false,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
