@@ -1,99 +1,64 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Apply Interview – Nov 2025
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This API was built for a challenge to apply for the Senior Backend Developer position at Apply Digital Solution. The challenge requirements were the following:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Every hour, the server must automatically make a request to the Contentful API to fetch data for Product entries. This scheduled task ensures that the server retrieves the latest Product data from Contentful at regular one-hour intervals. It should insert the data from this API into a database and also define a REST API that the client (e.g., Postman) can use to retrieve the data.
 
-## Description
+The service should provide a public module that returns paginated results with a maximum of 5 items per page and should support filtering by product attributes (e.g., name, category, price range). The service should also allow users to remove items, and these items should not reappear when the app is restarted.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The service should also provide a private reports module where you can obtain the following information:
 
-## Project setup
+Percentage of deleted products.
 
-```bash
-$ npm install
-```
+Percentage of non-deleted products with the following parameters:
+a. With or without price.
+b. With a custom date range.
 
-## Compile and run the project
+A report of my choice.
 
-```bash
-# development
-$ npm run start
+To access the endpoints in the private module, a JWT authorization header must be provided. Please note that there should be both public and private modules.
 
-# watch mode
-$ npm run start:dev
+STACK
 
-# production mode
-$ npm run start:prod
-```
+Node.js version: LTS
 
-## Run tests
+NestJS version: LTS
 
-```bash
-# unit tests
-$ npm run test
+Database: PostgreSQL
 
-# e2e tests
-$ npm run test:e2e
+ORM: TypeORM
 
-# test coverage
-$ npm run test:cov
-```
+API Docs: Swagger
 
-## Deployment
+Dockerized
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Test coverage required: 30%
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Test coverage achieved: 48.58%
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+The project includes an env.example with all environment variables required to run it. While I was working on the project, the CDN credentials provided to me expired. I notified HR, and they told me I could mock the data. I had already mapped the format that comes from the external API, so if you want to test it using functional credentials, you can remove the mock in the products.cronjob service and uncomment the call to the CDN.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+The project is fully dockerized, so you only need to run docker compose up if you have Docker installed on your machine. This project uses migrations, so you will need to run the command npm run migration:run. The Swagger documentation is available at /api/docs, as requested in the challenge. You will find the auth module and the product module there.
 
-## Resources
+Choices and Assumptions
 
-Check out a few resources that may come in handy when working with NestJS:
+Since the challenge only mentioned that JWT should be used, I assumed the purpose was simply to demonstrate the ability to work with authorization. Therefore, I didn’t create a full user module — only what was necessary to generate a token that simulates a logged-in user.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+For the custom report, I chose to create one that returns the total number of products by category.
 
-## Support
+I used PostgreSQL instead of MongoDB for simplicity and because the schema was already well-defined.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+The pagination I implemented is one that I created some time ago, which is why it includes extensive text and documentation — I understand it might look AI-generated because of how detailed it is, haha.
 
-## Stay in touch
+I believe that should be everything you need to know. If you need more information, please don’t hesitate to contact me at:
+fermerinonew@gmail.com
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
+commands:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+docker compose up 
+npm run migration:run
+
+
+
+Developed by Fernando Arteaga
